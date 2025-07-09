@@ -301,8 +301,24 @@
     </div>
 
     <!-- JavaScript -->
-    <script src="../js/menu-data.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/speisekarte.js"></script>
+    <script>
+        // Auto-detect script paths based on current location
+        const currentPath = window.location.pathname;
+        const isInPages = currentPath.includes('/pages/');
+        const basePath = isInPages ? '../' : '';
+        
+        // Load scripts dynamically with correct paths
+        const scripts = [
+            basePath + 'js/menu-data.js',
+            basePath + 'js/main.js', 
+            basePath + 'js/speisekarte.js'
+        ];
+        
+        scripts.forEach(src => {
+            const script = document.createElement('script');
+            script.src = src;
+            document.head.appendChild(script);
+        });
+    </script>
 </body>
 </html>
