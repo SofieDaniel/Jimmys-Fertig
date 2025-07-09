@@ -120,10 +120,12 @@ async function loadMenuDataForSpeisekarte() {
         
         // Try fallback paths
         const fallbackPaths = [
-            '../config/menu.ini',
-            'config/menu.ini',
-            './config/menu.ini',
-            '/config/menu.ini'
+            '../config/menu.ini',     // From pages/ subdirectory
+            'config/menu.ini',        // From main directory
+            './config/menu.ini',      // Relative path
+            '/config/menu.ini',       // Absolute path
+            'menu.ini',               // Direct in main directory (if moved)
+            '../menu.ini'             // One level up
         ];
         
         for (const fallbackPath of fallbackPaths) {
