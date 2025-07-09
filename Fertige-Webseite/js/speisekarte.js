@@ -106,8 +106,32 @@ async function loadMenuDataForSpeisekarte() {
     } catch (error) {
         console.error('Error loading menu data:', error);
         
-        // Use fallback data
-        console.log('Using fallback menu data');
+        // Try fallback paths
+        const fallbackPaths = [
+            '../config/menu.ini',
+            'config/menu.ini',
+            './config/menu.ini',
+            '/config/menu.ini'
+        ];
+        
+        for (const fallbackPath of fallbackPaths) {
+            try {
+                console.log('Trying fallback path:', fallbackPath);
+                const fallbackResponse = await fetch(fallbackPath);
+                if (fallbackResponse.ok) {
+                    console.log('✅ Fallback path successful:', fallbackPath);
+                    const iniText = await fallbackResponse.text();
+                    const menuData = parseINIForSpeisekarte(iniText);
+                    processMenuData(menuData);
+                    return;
+                }
+            } catch (fallbackError) {
+                console.warn('Fallback path failed:', fallbackPath, fallbackError);
+            }
+        }
+        
+        // Use fallback data if all paths fail
+        console.log('All paths failed, using fallback menu data');
         const fallbackData = getFallbackMenuDataForSpeisekarte();
         processMenuData(fallbackData);
     }
