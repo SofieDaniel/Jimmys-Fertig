@@ -230,6 +230,9 @@ function processMenuData(data) {
     }
     
     console.log('Processed menu items:', menuItems);
+    
+    // Initialize the menu grid to render items
+    initializeMenuGrid();
 }
 
 /**
