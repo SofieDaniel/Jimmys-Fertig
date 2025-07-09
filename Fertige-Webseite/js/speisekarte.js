@@ -61,15 +61,18 @@ async function initializeSpeisekarte() {
  * Load menu data specifically for Speisekarte
  */
 async function loadMenuDataForSpeisekarte() {
+    console.log('🍽️ Loading menu data for Speisekarte...');
+    
     try {
         // Try to use global menu data first
         if (window.JimmysApp && window.JimmysApp.menuData && Object.keys(window.JimmysApp.menuData).length > 0) {
+            console.log('✅ Using global menu data');
             processMenuData(window.JimmysApp.menuData);
             return;
         }
         
         // Load menu data directly
-        console.log('Loading menu data from config/menu.ini');
+        console.log('📥 Loading menu data from config/menu.ini');
         
         // Detect if we're in subdirectory or main directory
         const currentPath = window.location.pathname;
@@ -78,33 +81,31 @@ async function loadMenuDataForSpeisekarte() {
         if (currentPath.includes('/pages/')) {
             // We're in pages/ subdirectory, go up one level
             menuPath = '../config/menu.ini';
-            console.log('Detected pages/ subdirectory, using path:', menuPath);
+            console.log('📂 Detected pages/ subdirectory, using path:', menuPath);
         } else {
             // We're in main directory
             menuPath = 'config/menu.ini';
-            console.log('Detected main directory, using path:', menuPath);
+            console.log('📂 Detected main directory, using path:', menuPath);
         }
         
-        console.log('Trying to load menu from:', menuPath);
+        console.log('🔄 Trying to load menu from:', menuPath);
         const response = await fetch(menuPath);
         
         if (!response.ok) {
-            console.error('Failed to load menu.ini, status:', response.status);
+            console.error('❌ Failed to load menu.ini, status:', response.status);
             throw new Error(`HTTP error! status: ${response.status} - Path: ${menuPath}`);
         }
         
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
         const iniText = await response.text();
+        console.log('📄 Menu.ini loaded, size:', iniText.length, 'bytes');
+        
         const menuData = parseINIForSpeisekarte(iniText);
         
         processMenuData(menuData);
         
-        console.log('Menu data loaded for Speisekarte:', menuData);
+        console.log('✅ Menu data loaded successfully for Speisekarte:', menuData);
     } catch (error) {
-        console.error('Error loading menu data:', error);
+        console.error('❌ Error loading menu data:', error);
         
         // Try fallback paths
         const fallbackPaths = [
@@ -116,7 +117,7 @@ async function loadMenuDataForSpeisekarte() {
         
         for (const fallbackPath of fallbackPaths) {
             try {
-                console.log('Trying fallback path:', fallbackPath);
+                console.log('🔄 Trying fallback path:', fallbackPath);
                 const fallbackResponse = await fetch(fallbackPath);
                 if (fallbackResponse.ok) {
                     console.log('✅ Fallback path successful:', fallbackPath);
@@ -126,12 +127,12 @@ async function loadMenuDataForSpeisekarte() {
                     return;
                 }
             } catch (fallbackError) {
-                console.warn('Fallback path failed:', fallbackPath, fallbackError);
+                console.warn('⚠️  Fallback path failed:', fallbackPath, fallbackError);
             }
         }
         
         // Use fallback data if all paths fail
-        console.log('All paths failed, using fallback menu data');
+        console.log('🔄 All paths failed, using built-in fallback menu data');
         const fallbackData = getFallbackMenuDataForSpeisekarte();
         processMenuData(fallbackData);
     }
