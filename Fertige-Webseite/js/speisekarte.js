@@ -70,7 +70,13 @@ async function loadMenuDataForSpeisekarte() {
         
         // Load menu data directly
         console.log('Loading menu data from config/menu.ini');
-        const response = await fetch('../config/menu.ini');
+        
+        // Detect if we're in subdirectory or main directory
+        const isInPagesDir = window.location.pathname.includes('/pages/');
+        const menuPath = isInPagesDir ? '../config/menu.ini' : 'config/menu.ini';
+        
+        console.log('Trying to load menu from:', menuPath);
+        const response = await fetch(menuPath);
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
