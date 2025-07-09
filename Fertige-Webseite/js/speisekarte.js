@@ -89,10 +89,14 @@ async function loadMenuDataForSpeisekarte() {
             // We're in pages/ subdirectory, go up one level
             menuPath = '../config/menu.ini';
             console.log('📂 Detected pages/ subdirectory, using path:', menuPath);
-        } else {
-            // We're in main directory
+        } else if (currentPath.includes('/Fertige-Webseite/')) {
+            // We're in Fertige-Webseite structure
             menuPath = 'config/menu.ini';
-            console.log('📂 Detected main directory, using path:', menuPath);
+            console.log('📂 Detected Fertige-Webseite structure, using path:', menuPath);
+        } else {
+            // We're in main directory (deployment scenario)
+            menuPath = 'config/menu.ini';
+            console.log('📂 Detected main directory deployment, using path:', menuPath);
         }
         
         console.log('🔄 Trying to load menu from:', menuPath);
