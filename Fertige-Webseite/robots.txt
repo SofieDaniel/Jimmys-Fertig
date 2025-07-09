@@ -1,0 +1,57 @@
+# Robots.txt für Jimmy's Tapas Bar
+# Optimiert für SEO und Sicherheit
+
+User-agent: *
+Allow: /
+Allow: /pages/
+Allow: /images/
+Allow: /css/
+Allow: /js/
+
+# Wichtige Seiten für Crawling priorisieren
+Allow: /pages/speisekarte.html
+Allow: /pages/standorte.html
+Allow: /pages/bewertungen.html
+Allow: /pages/kontakt.html
+
+# Nicht relevante Bereiche ausschließen
+Disallow: /config/
+Disallow: *.ini
+Disallow: /logs/
+Disallow: /tmp/
+Disallow: /.git/
+Disallow: /.emergent/
+
+# Sitemap für Suchmaschinen
+Sitemap: https://jimmys-tapasbar.de/sitemap.xml
+
+# Crawl-Delay für bessere Server-Performance
+Crawl-delay: 1
+
+# Spezifische Anweisungen für Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bing/Microsoft Bot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Yandex (falls relevant für deutsche Zielgruppe)
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+# Schädliche Bots blockieren
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /

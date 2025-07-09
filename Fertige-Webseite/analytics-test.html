@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Test - Jimmy's Tapas Bar</title>
+    
+    <!-- Google Analytics 4 (TEST) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'GA_MEASUREMENT_ID', {
+        send_page_view: true,
+        debug_mode: true, // Für Testing
+        custom_map: {
+          'custom_parameter_1': 'restaurant_location',
+          'custom_parameter_2': 'menu_category'
+        }
+      });
+    </script>
+    
+    <!-- Google Search Console Verification (TEST) -->
+    <meta name="google-site-verification" content="SEARCH_CONSOLE_VERIFICATION_CODE" />
+    
+    <!-- Test Event Tracking Functions -->
+    <script>
+      // Restaurant-specific Event Tracking
+      function trackMenuView(category) {
+        console.log('📊 Tracking Menu View:', category);
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'menu_view', {
+            event_category: 'Menu',
+            event_label: category,
+            custom_parameter_2: category,
+            value: 1
+          });
+          updateEventCounter('menu_view');
+        } else {
+          console.warn('gtag not available');
+        }
+      }
+
+      function trackReservationAttempt() {
+        console.log('📊 Tracking Reservation Attempt');
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'reservation_attempt', {
+            event_category: 'Reservation',
+            event_label: 'Contact Form',
+            value: 10
+          });
+          updateEventCounter('reservation_attempt');
+        }
+      }
+
+      function trackLocationView(location) {
+        console.log('📊 Tracking Location View:', location);
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'location_view', {
+            event_category: 'Location',
+            event_label: location,
+            custom_parameter_1: location,
+            value: 5
+          });
+          updateEventCounter('location_view');
+        }
+      }
+
+      function trackPhoneCall(location) {
+        console.log('📊 Tracking Phone Call:', location);
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'phone_call', {
+            event_category: 'Contact',
+            event_label: 'Phone Call - ' + location,
+            value: 15
+          });
+          updateEventCounter('phone_call');
+        }
+      }
+
+      function trackReviewClick() {
+        console.log('📊 Tracking Review Click');
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'review_click', {
+            event_category: 'Reviews',
+            event_label: 'Google Reviews',
+            value: 8
+          });
+          updateEventCounter('review_click');
+        }
+      }
+
+      // Debug-Funktionen
+      let eventCounter = 0;
+      function updateEventCounter(eventType) {
+        eventCounter++;
+        const counter = document.getElementById('events-counter');
+        if (counter) {
+          counter.textContent = eventCounter;
+        }
+        
+        // Log zum Debug-Bereich hinzufügen
+        const debugLog = document.getElementById('debug-log');
+        if (debugLog) {
+          const timestamp = new Date().toLocaleTimeString();
+          debugLog.innerHTML += `<div>${timestamp} - ${eventType}</div>`;
+          debugLog.scrollTop = debugLog.scrollHeight;
+        }
+      }
+
+      // Status-Check
+      function checkAnalyticsStatus() {
+        const status = document.getElementById('analytics-status');
+        if (status) {
+          if (typeof gtag !== 'undefined') {
+            status.innerHTML = '<span style="color: green;">✅ Google Analytics Loaded</span>';
+          } else {
+            status.innerHTML = '<span style="color: red;">❌ Google Analytics Not Loaded</span>';
+          }
+        }
+      }
+
+      // Test alle Events
+      function testAllEvents() {
+        console.log('🧪 Testing all analytics events...');
+        trackMenuView('tapas');
+        setTimeout(() => trackLocationView('neustadt'), 500);
+        setTimeout(() => trackPhoneCall('neustadt'), 1000);
+        setTimeout(() => trackReviewClick(), 1500);
+        setTimeout(() => trackReservationAttempt(), 2000);
+        
+        alert('Alle Test-Events wurden gesendet! Überprüfen Sie die Browser-Konsole und Google Analytics Real-Time.');
+      }
+
+      // Initialization
+      document.addEventListener('DOMContentLoaded', function() {
+        checkAnalyticsStatus();
+        
+        // Status alle 5 Sekunden aktualisieren
+        setInterval(checkAnalyticsStatus, 5000);
+        
+        // Initial page view event
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'page_view', {
+            event_category: 'Test',
+            event_label: 'Analytics Test Page'
+          });
+        }
+      });
+    </script>
+    
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+      h1 {
+        color: #d32f2f;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .status-panel {
+        background: #e3f2fd;
+        border: 1px solid #2196f3;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      .test-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      button {
+        padding: 12px 20px;
+        background: #d32f2f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background: #b71c1c;
+      }
+      button.test-all {
+        background: #4caf50;
+        grid-column: 1 / -1;
+      }
+      button.test-all:hover {
+        background: #45a049;
+      }
+      .debug-section {
+        background: #f5f5f5;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+      #debug-log {
+        height: 200px;
+        overflow-y: auto;
+        background: #333;
+        color: #0f0;
+        padding: 10px;
+        border-radius: 3px;
+        font-family: monospace;
+        font-size: 12px;
+      }
+      .instructions {
+        background: #fff3cd;
+        border: 1px solid #ffeaa7;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      .instructions h3 {
+        margin-top: 0;
+        color: #856404;
+      }
+      .code-block {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: monospace;
+        font-size: 12px;
+        overflow-x: auto;
+        margin: 10px 0;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Analytics Test - Jimmy's Tapas Bar</h1>
+        
+        <div class="instructions">
+            <h3>📋 Testanleitung:</h3>
+            <ol>
+                <li>Ersetzen Sie <code>GA_MEASUREMENT_ID</code> mit Ihrer echten Google Analytics ID</li>
+                <li>Ersetzen Sie <code>SEARCH_CONSOLE_VERIFICATION_CODE</code> mit Ihrem echten Code</li>
+                <li>Öffnen Sie die Browser-Entwicklertools (F12) → Console</li>
+                <li>Öffnen Sie Google Analytics → Berichte → Real-Time</li>
+                <li>Klicken Sie auf die Test-Buttons unten</li>
+                <li>Überprüfen Sie die Konsole und Analytics auf Events</li>
+            </ol>
+        </div>
+        
+        <div class="status-panel">
+            <h3>📊 Analytics Status:</h3>
+            <div id="analytics-status">Checking...</div>
+            <div>Events gesendet: <span id="events-counter">0</span></div>
+        </div>
+        
+        <div class="test-buttons">
+            <button onclick="trackMenuView('tapas')">🍤 Tapas Menu View</button>
+            <button onclick="trackMenuView('paella')">🥘 Paella Menu View</button>
+            <button onclick="trackLocationView('neustadt')">📍 Neustadt Location</button>
+            <button onclick="trackLocationView('grossenbrode')">📍 Großenbrode Location</button>
+            <button onclick="trackPhoneCall('neustadt')">📞 Phone Call</button>
+            <button onclick="trackReviewClick()">⭐ Review Click</button>
+            <button onclick="trackReservationAttempt()">🍽️ Reservation Attempt</button>
+            <button class="test-all" onclick="testAllEvents()">🚀 Test All Events</button>
+        </div>
+        
+        <div class="debug-section">
+            <h3>🔍 Debug Log:</h3>
+            <div id="debug-log"></div>
+        </div>
+        
+        <div class="instructions">
+            <h3>🔧 Für Production:</h3>
+            <div class="code-block">
+# 1. IDs ersetzen
+sed -i 's/GA_MEASUREMENT_ID/G-IHRE-ECHTE-ID/g' analytics-test.html
+sed -i 's/SEARCH_CONSOLE_VERIFICATION_CODE/ihr-code/g' analytics-test.html
+
+# 2. Debug-Modus deaktivieren
+sed -i 's/debug_mode: true/debug_mode: false/g' analytics-test.html
+
+# 3. In Production-Seiten integrieren
+# Kopieren Sie die Analytics-Codes in Ihre HTML-Seiten
+            </div>
+        </div>
+        
+        <div class="debug-section">
+            <h3>📈 Erwartete Google Analytics Events:</h3>
+            <ul>
+                <li><strong>menu_view</strong> - Wenn Menü-Kategorien angezeigt werden</li>
+                <li><strong>location_view</strong> - Wenn Standort-Seiten besucht werden</li>
+                <li><strong>phone_call</strong> - Wenn Telefon-Links geklickt werden</li>
+                <li><strong>review_click</strong> - Wenn Review-Links geklickt werden</li>
+                <li><strong>reservation_attempt</strong> - Wenn Kontaktformular abgesendet wird</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

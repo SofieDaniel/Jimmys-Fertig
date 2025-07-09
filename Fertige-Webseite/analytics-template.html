@@ -1,0 +1,139 @@
+<!-- 📊 GOOGLE ANALYTICS & SEARCH CONSOLE INTEGRATION
+     Fügen Sie diese Codes in den <head>-Bereich aller HTML-Dateien ein -->
+
+<!-- Google Analytics 4 (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'GA_MEASUREMENT_ID', {
+    // Enhanced E-commerce für Restaurant
+    send_page_view: true,
+    custom_map: {
+      'custom_parameter_1': 'restaurant_location',
+      'custom_parameter_2': 'menu_category'
+    }
+  });
+
+  // Event-Tracking für Restaurant-spezifische Aktionen
+  function trackMenuView(category) {
+    gtag('event', 'menu_view', {
+      event_category: 'Menu',
+      event_label: category,
+      custom_parameter_2: category
+    });
+  }
+
+  function trackReservationAttempt() {
+    gtag('event', 'reservation_attempt', {
+      event_category: 'Reservation',
+      event_label: 'Contact Form'
+    });
+  }
+
+  function trackLocationView(location) {
+    gtag('event', 'location_view', {
+      event_category: 'Location',
+      event_label: location,
+      custom_parameter_1: location
+    });
+  }
+</script>
+
+<!-- Google Search Console Verification -->
+<meta name="google-site-verification" content="SEARCH_CONSOLE_VERIFICATION_CODE" />
+
+<!-- Bing Webmaster Tools Verification -->
+<meta name="msvalidate.01" content="BING_VERIFICATION_CODE" />
+
+<!-- Yandex Webmaster Verification (optional für deutsche Zielgruppe) -->
+<meta name="yandex-verification" content="YANDEX_VERIFICATION_CODE" />
+
+<!-- Facebook Domain Verification -->
+<meta name="facebook-domain-verification" content="FACEBOOK_DOMAIN_VERIFICATION" />
+
+<!-- Facebook Pixel (für Social Media Marketing) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', 'FACEBOOK_PIXEL_ID');
+fbq('track', 'PageView');
+
+// Custom Events für Restaurant
+function trackMenuInteraction(category) {
+  fbq('track', 'ViewContent', {
+    content_name: category,
+    content_category: 'Menu',
+    content_type: 'menu_category'
+  });
+}
+
+function trackReservationContact() {
+  fbq('track', 'Contact');
+}
+</script>
+
+<!-- Google Tag Manager (Alternative zu GA4) -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM_CONTAINER_ID');</script>
+
+<!-- Cookie Consent Integration (DSGVO-konform) -->
+<script>
+window.addEventListener('load', function() {
+  // Erst nach Cookie-Zustimmung Analytics laden
+  if (localStorage.getItem('cookieConsent') === 'accepted') {
+    // Analytics-Codes hier aktivieren
+    console.log('Analytics aktiviert nach Cookie-Zustimmung');
+  }
+});
+</script>
+
+<!-- 
+SETUP-ANLEITUNG:
+
+1. Google Analytics 4:
+   - Gehen Sie zu https://analytics.google.com
+   - Erstellen Sie eine neue Property für jimmys-tapasbar.de
+   - Ersetzen Sie 'GA_MEASUREMENT_ID' mit Ihrer echten Mess-ID (z.B. G-XXXXXXXXXX)
+
+2. Google Search Console:
+   - Gehen Sie zu https://search.google.com/search-console
+   - Fügen Sie Ihre Domain hinzu
+   - Verwenden Sie die HTML-Tag-Methode zur Verification
+   - Ersetzen Sie 'SEARCH_CONSOLE_VERIFICATION_CODE' mit Ihrem Code
+
+3. Bing Webmaster Tools:
+   - Gehen Sie zu https://www.bing.com/webmasters
+   - Fügen Sie Ihre Website hinzu
+   - Ersetzen Sie 'BING_VERIFICATION_CODE' mit Ihrem Code
+
+4. Facebook Pixel (optional):
+   - Gehen Sie zu https://business.facebook.com
+   - Erstellen Sie einen Pixel
+   - Ersetzen Sie 'FACEBOOK_PIXEL_ID' mit Ihrer Pixel-ID
+
+WICHTIGE EVENTS FÜR RESTAURANTS:
+- trackMenuView('tapas') - Wenn Benutzer Speisekarte-Kategorie öffnet
+- trackReservationAttempt() - Wenn Kontaktformular abgeschickt wird
+- trackLocationView('neustadt') - Wenn Standort-Seite besucht wird
+
+DSGVO-HINWEIS:
+- Cookie-Consent muss VOR Analytics-Aktivierung eingeholt werden
+- Datenschutzerklärung muss entsprechend angepasst werden
+- Opt-out-Möglichkeiten müssen angeboten werden
+-->
+
+<!-- Noindex für Test-/Staging-Umgebungen -->
+<!-- <meta name="robots" content="noindex, nofollow"> -->

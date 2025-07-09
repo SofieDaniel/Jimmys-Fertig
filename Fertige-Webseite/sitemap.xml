@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+        
+    <!-- Startseite -->
+    <url>
+        <loc>https://jimmys-tapasbar.de/</loc>
+        <lastmod>2025-01-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://jimmys-tapasbar.de/images/hero-tapas-background.jpg</image:loc>
+            <image:title>Jimmy's Tapas Bar - Authentische spanische Küche</image:title>
+            <image:caption>Authentische spanische Tapas und Paella an der Ostsee</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Speisekarte -->
+    <url>
+        <loc>https://jimmys-tapasbar.de/pages/speisekarte.html</loc>
+        <lastmod>2025-01-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://jimmys-tapasbar.de/images/paella-specialty.jpg</image:loc>
+            <image:title>Speisekarte Jimmy's Tapas Bar</image:title>
+            <image:caption>Über 240 authentische spanische Gerichte</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Standorte -->
+    <url>
+        <loc>https://jimmys-tapasbar.de/pages/standorte.html</loc>
+        <lastmod>2025-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Bewertungen -->
+    <url>
+        <loc>https://jimmys-tapasbar.de/pages/bewertungen.html</loc>
+        <lastmod>2025-01-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Über uns -->
+    <url>
+        <loc>https://jimmys-tapasbar.de/pages/ueber-uns.html</loc>
+        <lastmod>2025-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <image:image>
+            <image:loc>https://jimmys-tapasbar.de/images/chef-jimmy.jpg</image:loc>
+            <image:title>Jimmy Rodriguez - Küchenchef</image:title>
+            <image:caption>Unser erfahrener Küchenchef aus Valencia</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Kontakt -->
+    <url>
+        <loc>https://jimmys-tapasbar.de/pages/kontakt.html</loc>
+        <lastmod>2025-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Impressum -->
+    <url>
+        <loc>https://jimmys-tapasbar.de/pages/impressum.html</loc>
+        <lastmod>2025-01-01</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <!-- Datenschutz -->
+    <url>
+        <loc>https://jimmys-tapasbar.de/pages/datenschutz.html</loc>
+        <lastmod>2025-01-01</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+</urlset>

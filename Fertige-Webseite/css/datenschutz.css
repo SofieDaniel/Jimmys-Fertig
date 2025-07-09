@@ -1,0 +1,204 @@
+/* Datenschutz Page Styles - EXAKTE KOPIE von standorte.css mit Datenschutz-Header */
+
+/* Page Header - Mit Hintergrundbild und reduzierter Höhe */
+.page-header {
+    position: relative;
+    padding: 6rem 0 4rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), 
+                url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1920&q=80') center/cover;
+    text-align: center;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(58, 44, 35, 0.3);
+    z-index: 1;
+}
+
+.page-header .container {
+    position: relative;
+    z-index: 2;
+}
+
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.page-subtitle {
+    color: #F5E6D3;
+    font-size: 1.25rem;
+    opacity: 0.95;
+    font-style: italic;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Locations Section - IDENTISCH MIT STANDORTE */
+.locations-section {
+    padding: 4rem 0;
+    background: transparent;
+}
+
+.locations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Location Cards - IDENTISCH MIT STANDORTE MIT WEISSEN RÄNDERN */
+.location-card-large {
+    background: rgba(45, 31, 26, 0.95);
+    border: 2px solid #FFFFFF; /* WEISSE Umrandung */
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.location-card-large:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border-color: #F5E6D3;
+}
+
+.location-hero {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.location-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.location-card-large:hover .location-hero-image {
+    transform: scale(1.05);
+}
+
+.location-title-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 2rem 1.5rem 1rem;
+}
+
+.location-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    color: #FFFFFF;
+    margin: 0;
+    font-weight: 600;
+}
+
+.location-info {
+    padding: 2rem;
+}
+
+.info-section {
+    margin-bottom: 2rem;
+}
+
+.info-section:last-child {
+    margin-bottom: 0;
+}
+
+.info-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.info-icon {
+    font-size: 1.25rem;
+    width: 30px;
+    text-align: center;
+}
+
+.info-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--warm-beige);
+    margin: 0;
+    font-weight: 600;
+}
+
+.info-section p {
+    color: var(--light-beige);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.opening-schedule {
+    margin-top: 0.5rem;
+}
+
+.schedule-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(245, 230, 211, 0.1);
+}
+
+.schedule-row:last-child {
+    border-bottom: none;
+}
+
+.schedule-row span:first-child {
+    color: var(--light-beige);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.schedule-row span:last-child {
+    color: var(--warm-beige);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .locations-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .location-card-large {
+        margin: 0 1rem;
+    }
+    
+    .location-info {
+        padding: 1.5rem;
+    }
+    
+    .location-title {
+        font-size: 1.5rem;
+    }
+}

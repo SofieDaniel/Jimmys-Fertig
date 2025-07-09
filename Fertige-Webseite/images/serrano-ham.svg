@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="hamGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#A0522D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#CD853F;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#hamGrad)"/>
+  <text x="300" y="180" text-anchor="middle" fill="#F5E6D3" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Serrano Schinken</text>
+  <text x="300" y="220" text-anchor="middle" fill="#D4AF37" font-family="Arial, sans-serif" font-size="18">mit Feigen</text>
+  <text x="300" y="260" text-anchor="middle" fill="#F5E6D3" font-family="Arial, sans-serif" font-size="14">Traditionell spanisch</text>
+</svg>
