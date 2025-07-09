@@ -64,14 +64,21 @@ async function loadMenuDataForSpeisekarte() {
     console.log('🍽️ Loading menu data for Speisekarte...');
     
     try {
-        // Try to use global menu data first
+        // Try to use static menu data first
+        if (window.MENU_DATA && window.MENU_DATA.items && window.MENU_DATA.items.length > 0) {
+            console.log('✅ Using static menu data - ' + window.MENU_DATA.items.length + ' items');
+            processMenuData(window.MENU_DATA);
+            return;
+        }
+        
+        // Try to use global menu data
         if (window.JimmysApp && window.JimmysApp.menuData && Object.keys(window.JimmysApp.menuData).length > 0) {
             console.log('✅ Using global menu data');
             processMenuData(window.JimmysApp.menuData);
             return;
         }
         
-        // Load menu data directly
+        // Load menu data directly (fallback for development)
         console.log('📥 Loading menu data from config/menu.ini');
         
         // Detect if we're in subdirectory or main directory
