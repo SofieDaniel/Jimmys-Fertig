@@ -243,54 +243,177 @@ function getFallbackMenuDataForSpeisekarte() {
         },
         categories: {
             inicio: "Inicio / Vorspeisen",
-            carnes: "Carnes / Fleischgerichte",
-            pescados: "Pescados / Fischgerichte",
-            paellas: "Paellas",
-            postres: "Postres / Nachspeisen",
-            bebidas: "Bebidas / Getränke"
+            "tapas-pollo": "Tapas de Pollo",
+            carnes: "Tapas de Carne",
+            pescados: "Tapas de Pescado",
+            paellas: "Tapa Paella",
+            pasta: "Pasta",
+            pizza: "Pizza",
+            postres: "Dessert",
+            "weine-offen": "Weine (offen)",
+            "bier-fass": "Bier vom Fass",
+            cocktails: "Cocktails mit Alkohol"
         },
         items: [
             {
                 id: "inicio_1",
-                name: "Gambas al Ajillo",
-                description: "Klassische Knoblauchgarnelen in Olivenöl",
-                detailed_description: "Frische Garnelen, scharf angebraten in bestem Olivenöl mit viel Knoblauch und Petersilie",
-                price: "12.90",
+                name: "Aioli",
+                description: "Hausgemachte spanische Knoblauch-Mayonnaise",
+                price: "3.50",
                 category: "inicio",
-                allergens: "Krustentiere",
-                origin: "Andalusien",
-                image: "images/placeholder-card.svg",
-                vegetarian: false,
-                preparation: "In Knoblauchöl",
-                ingredients: "Garnelen, Knoblauch, Petersilie, Olivenöl, Chili"
+                allergens: "Eier"
             },
             {
-                id: "inicio_2",
-                name: "Patatas Bravas",
-                description: "Würzige Kartoffeln mit traditioneller Bravas-Sauce",
-                detailed_description: "Knusprig gebratene Kartoffelwürfel mit hausgemachter Bravas-Sauce und Aioli",
-                price: "8.90",
+                id: "inicio_2", 
+                name: "Aceitunas",
+                description: "Marinierte Oliven mit Kräutern",
+                price: "3.90",
                 category: "inicio",
-                allergens: "Eier (Aioli)",
-                origin: "Madrid",
-                image: "images/placeholder-card.svg",
-                vegetarian: true,
-                preparation: "Frittiert",
-                ingredients: "Kartoffeln, Tomaten, Paprika, Knoblauch, Olivenöl"
+                allergens: ""
+            },
+            {
+                id: "inicio_3",
+                name: "Pan con Tomate",
+                description: "Geröstetes Brot mit Tomate und Olivenöl",
+                price: "4.20",
+                category: "inicio",
+                allergens: "Gluten"
+            },
+            {
+                id: "tapas-pollo_1",
+                name: "Pollo al Ajillo",
+                description: "Hähnchen in Knoblauch-Olivenöl",
+                price: "6.50",
+                category: "tapas-pollo",
+                allergens: ""
+            },
+            {
+                id: "tapas-pollo_2",
+                name: "Alitas de Pollo",
+                description: "Würzige Hähnchenflügel",
+                price: "7.20",
+                category: "tapas-pollo",
+                allergens: ""
+            },
+            {
+                id: "carnes_1",
+                name: "Jamón Ibérico",
+                description: "Luftgetrockneter Schinken aus Spanien",
+                price: "8.90",
+                category: "carnes",
+                allergens: ""
+            },
+            {
+                id: "carnes_2",
+                name: "Chorizo a la Plancha",
+                description: "Gebratene spanische Wurst",
+                price: "6.80",
+                category: "carnes",
+                allergens: ""
+            },
+            {
+                id: "pescados_1",
+                name: "Gambas al Ajillo",
+                description: "Garnelen in Knoblauch und Chili",
+                price: "7.50",
+                category: "pescados",
+                allergens: "Schalentiere"
+            },
+            {
+                id: "pescados_2",
+                name: "Calamares a la Romana",
+                description: "Frittierte Tintenfischringe",
+                price: "6.90",
+                category: "pescados",
+                allergens: "Schalentiere, Gluten"
             },
             {
                 id: "paellas_1",
                 name: "Paella Valenciana",
-                description: "Original spanische Paella mit Safran, Huhn und Gemüse",
-                detailed_description: "Die klassische Paella aus Valencia mit Bomba-Reis, echtem Safran, Huhn, grünen Bohnen und Tomaten",
-                price: "18.90",
+                description: "Traditionelle Paella mit Huhn und Gemüse",
+                price: "12.50",
                 category: "paellas",
-                allergens: "",
-                origin: "Valencia",
-                image: "images/placeholder-card.svg",
-                vegetarian: false,
-                preparation: "In der Paellera",
-                ingredients: "Bomba-Reis, Safran, Huhn, grüne Bohnen, Tomaten, Olivenöl"
+                allergens: ""
+            },
+            {
+                id: "paellas_2",
+                name: "Paella Mixta",
+                description: "Paella mit Fleisch und Meeresfrüchten",
+                price: "14.90",
+                category: "paellas",
+                allergens: "Schalentiere"
+            },
+            {
+                id: "pasta_1",
+                name: "Spaghetti Carbonara",
+                description: "Klassische Carbonara mit Speck und Parmesan",
+                price: "9.50",
+                category: "pasta",
+                allergens: "Gluten, Eier, Milch"
+            },
+            {
+                id: "pizza_1",
+                name: "Pizza Margherita",
+                description: "Tomaten, Mozzarella, Basilikum",
+                price: "8.50",
+                category: "pizza",
+                allergens: "Gluten, Milch"
+            },
+            {
+                id: "postres_1",
+                name: "Crema Catalana",
+                description: "Katalanische Crème Brûlée",
+                price: "4.50",
+                category: "postres",
+                allergens: "Eier, Milch"
+            },
+            {
+                id: "postres_2",
+                name: "Flan Casero",
+                description: "Hausgemachter Karamellpudding",
+                price: "4.20",
+                category: "postres",
+                allergens: "Eier, Milch"
+            },
+            {
+                id: "weine-offen_1",
+                name: "Sangria (0,5l)",
+                description: "Traditionelle spanische Sangria",
+                price: "6.90",
+                category: "weine-offen",
+                allergens: ""
+            },
+            {
+                id: "weine-offen_2",
+                name: "Rioja Tinto (0,2l)",
+                description: "Spanischer Rotwein",
+                price: "4.50",
+                category: "weine-offen",
+                allergens: ""
+            },
+            {
+                id: "bier-fass_1",
+                name: "Estrella Galicia (0,3l)",
+                description: "Spanisches Bier vom Fass",
+                price: "3.50",
+                category: "bier-fass",
+                allergens: "Gluten"
+            },
+            {
+                id: "cocktails_1",
+                name: "Mojito",
+                description: "Weißer Rum, Minze, Limette, Zucker",
+                price: "7.50",
+                category: "cocktails",
+                allergens: ""
+            },
+            {
+                id: "cocktails_2",
+                name: "Piña Colada",
+                description: "Weißer Rum, Kokosnuss, Ananas",
+                price: "8.20",
+                category: "cocktails",
+                allergens: ""
             }
         ]
     };
