@@ -79,25 +79,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <script>
-        // Auto-detect CSS paths based on current location
-        const currentPath = window.location.pathname;
-        const isInPages = currentPath.includes('/pages/');
-        const basePath = isInPages ? '../' : '';
-        
-        // Load CSS dynamically with correct paths
-        const cssFiles = [
-            basePath + 'css/styles.css',
-            basePath + 'css/speisekarte.css'
-        ];
-        
-        cssFiles.forEach(href => {
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = href;
-            document.head.appendChild(link);
-        });
-    </script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/speisekarte.css">
     
     <!-- Skip to content for accessibility -->
     <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
