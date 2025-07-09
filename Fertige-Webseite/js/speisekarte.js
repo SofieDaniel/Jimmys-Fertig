@@ -72,11 +72,26 @@ async function loadMenuDataForSpeisekarte() {
         console.log('Loading menu data from config/menu.ini');
         
         // Detect if we're in subdirectory or main directory
-        const isInPagesDir = window.location.pathname.includes('/pages/');
-        const menuPath = isInPagesDir ? '../config/menu.ini' : 'config/menu.ini';
+        const currentPath = window.location.pathname;
+        let menuPath;
+        
+        if (currentPath.includes('/pages/')) {
+            // We're in pages/ subdirectory, go up one level
+            menuPath = '../config/menu.ini';
+            console.log('Detected pages/ subdirectory, using path:', menuPath);
+        } else {
+            // We're in main directory
+            menuPath = 'config/menu.ini';
+            console.log('Detected main directory, using path:', menuPath);
+        }
         
         console.log('Trying to load menu from:', menuPath);
         const response = await fetch(menuPath);
+        
+        if (!response.ok) {
+            console.error('Failed to load menu.ini, status:', response.status);
+            throw new Error(`HTTP error! status: ${response.status} - Path: ${menuPath}`);
+        }
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
